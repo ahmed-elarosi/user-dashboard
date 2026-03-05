@@ -11,3 +11,13 @@ export async function fetchUsers(): Promise<User[]> {
 
     return response.json();
 }
+
+export async function fetchPosts(UserId: number): Promise<post[]> {
+    const response = await fetch(`${BASE_URL}/posts?userId=${UserId}`);
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch posts");
+    }
+
+    return response.json();
+}
